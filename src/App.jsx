@@ -1,6 +1,7 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Login from './components/Login'
 import Pwid from './components/Pwid';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Product from './components/Product/product';
 import LoginMain from './components/LoginMain/LoginMain';
 import ProductResevation from './components/Product/ProductResevation';

@@ -1,7 +1,12 @@
-const Dotenv = require("dotenv-webpack");
+
 
 module.exports = {
-    Plugin: [
-        new Dotenv(),
-    ]
+    resolve: {
+        // add the fallback setting below 
+        fallback: {
+          "fs": false,
+          "os": false,
+          "path": false
+        },
+    }
 }

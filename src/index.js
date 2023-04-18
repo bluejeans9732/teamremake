@@ -8,8 +8,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 // ReactDOM.render(<Routes />, document.getElementById('root'));
 
-if (process.env.NODE_ENV === "production") {
-    require("dotenv").config();
-  }
+// if (process.env.NODE_ENV === "production") {
+//     require("dotenv").config();
+//   }
 
   

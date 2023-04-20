@@ -23,13 +23,19 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/api/login', {
-                user,
-                pwd
-            });
-            console.log(response.data);
+            const response = await axios.post('ec2-54-180-126-21.ap-northeast-2.compute.amazonaws.com:8081/customer/login', 
+                JSON.stringify({ user, pwd }),
+                {
+                    headers: { 'Content-Type': 'application/json'},
+                    withCredentials: true
+                }
+            );
+            console.log(JSON.stringify(response?.data));
+            const accessToken = response?.data?.accessToken;
         } catch (error) {
-            console.log(error)
+            if(!error?.response) {
+                console.log('no response');
+            }
         }
         setUser('');
         setPwd('');
@@ -42,7 +48,7 @@ function Login() {
 
                 <Link to="/" className="mx-auto"><h1 className="text-5xl">Oh! MyCar</h1></Link>
 
-                <section className="flex flex-col mt-20 mx-auto w-1/2">
+                <section className="flex flex-col mt-20 mx-auto w-1/2" onSubmit={handleSubmit}>
                     <form autoComplete="off">
 
                         <h1 className="text-4xl">로그인</h1>
@@ -79,7 +85,7 @@ function Login() {
                         <div>
                             <p className="mt-1 text-xs float-right font-light">비밀번호를 잊어버렸나요?</p>
                         </div>
-                        <button className="Login_login rounded-md  mt-10 w-full h-12 bg-cyan-300 text-white text-bold" onSubmit={handleSubmit}>로그인</button>
+                        <button className="Login_login rounded-md  mt-10 w-full h-12 bg-cyan-300 text-white text-bold" >로그인</button>
 
                     </form>
                     

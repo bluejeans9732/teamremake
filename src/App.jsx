@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import './firebase-messaging-sw';
+
 import Login from './components/Login'
 import Pwid from './components/Pwid';
 import Product from './components/Product/product';

@@ -23,7 +23,7 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('https://ec2-13-124-88-156.ap-northeast-2.compute.amazonaws.com:8081/customer/login', 
+            const response = await axios.post('http://ec2-13-124-88-156.ap-northeast-2.compute.amazonaws.com:8081/customer/login', 
                 JSON.stringify({ user, pwd }),
                 {
                     headers: { 'Content-Type': 'application/json'},

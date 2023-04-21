@@ -23,7 +23,7 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('ec2-54-180-126-21.ap-northeast-2.compute.amazonaws.com:8081/customer/login', 
+            const response = await axios.post('http://ec2-13-124-88-156.ap-northeast-2.compute.amazonaws.com:8081/customer/login', 
                 JSON.stringify({ user, pwd }),
                 {
                     headers: { 'Content-Type': 'application/json'},
@@ -32,10 +32,12 @@ function Login() {
             );
             console.log(JSON.stringify(response?.data));
             const accessToken = response?.data?.accessToken;
+            console.log(accessToken);
         } catch (error) {
-            if(!error?.response) {
-                console.log('no response');
-            }
+            console.log(error);
+            // if(!error?.response) {
+            //     console.log('no response');
+            // }
         }
         setUser('');
         setPwd('');

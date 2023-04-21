@@ -66,12 +66,16 @@ function Pwid() {
         e.preventDefault();
         console.log(user, pwd, nickname);
         try {
-            const response = await axios.post('/api/signup', {
-                user,
-                pwd,
-                nickname
-            });
-            console.log(response.data);
+            const response = await axios.post('http://ec2-13-124-88-156.ap-northeast-2.compute.amazonaws.com:8081/customer/signup', 
+                JSON.stringify({ user, pwd, nickname }),
+                {
+                    headers: { 'Content-Type': 'application/json'},
+                    withCredentials: true
+                }
+            );
+            console.log(JSON.stringify(response?.data));
+            const accessToken = response?.data?.accessToken;
+            console.log(accessToken);
           } catch (error) {
             console.log(error);
           }
@@ -84,7 +88,7 @@ function Pwid() {
 
                 <Link to="/" className="mx-auto"><h1 className="text-5xl">Oh! MyCar</h1></Link>
 
-                <form autoComplete="off">
+                <form autoComplete="off" onSubmit={handleSubmit}>
                     <div className="flex flex-col mt-20 mx-auto w-1/2">
 
                         <h1 className="text-4xl">회원가입</h1>
@@ -180,7 +184,7 @@ function Pwid() {
                         <button 
                             className={!validName || !validPwd || !validMatch || !validnick ? "rounded-md mt-10 h-12 text-white bg-gray-400" : "rounded-md mt-10 h-12 text-white bg-blue-400"}
                             disabled={!validName || !validPwd || !validMatch || !validnick ? true : false}
-                            onSubmit={handleSubmit}
+                            
                         > 
                             회원가입 하기
                         </button>

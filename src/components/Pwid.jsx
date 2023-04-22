@@ -66,7 +66,7 @@ function Pwid() {
         e.preventDefault();
         console.log(user, pwd, nickname);
         try {
-            const response = await axios.post('http://ec2-13-124-88-156.ap-northeast-2.compute.amazonaws.com:8081/customer/signup', 
+            const response = await axios.post('', 
                 JSON.stringify({ user, pwd, nickname }),
                 {
                     headers: { 'Content-Type': 'application/json'},

@@ -3,6 +3,8 @@ import React, { useRef, useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+import AXIOS from './axios';
+
 
 function Login() {
     const userRef = useRef();
@@ -22,26 +24,22 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const response = await axios.post('http://ec2-13-124-88-156.ap-northeast-2.compute.amazonaws.com:8081/customer/login', 
-                JSON.stringify({ user, pwd }),
-                {
-                    headers: { 'Content-Type': 'application/json'},
-                    withCredentials: true
-                }
-            );
-            console.log(JSON.stringify(response?.data));
-            const accessToken = response?.data?.accessToken;
-            console.log(accessToken);
-        } catch (error) {
-            console.log(error);
-            // if(!error?.response) {
-            //     console.log('no response');
-            // }
-        }
+        AXIOS.post('/customer/login', {
+                email:user,
+                password:pwd,
+            })
+            .then((response) => {
+                console.log(response)
+            })
+            .catch((error) => console.log(error.response));
         setUser('');
         setPwd('');
     }
+
+    // 로그아웃시 ls에 user 아이디 삭제
+    // const logout() => {
+    //     localStorage.removeItem('ls')
+    // };
 
     return (
         <div className="h-full w-full relative overflow-y-scroll scrollbar-hide flex">

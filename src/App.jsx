@@ -15,26 +15,32 @@ import Places from "./pages/place/Places";
 
 // Routes
 import Home from "./pages/Home";
+import { useState } from "react";
+import MyPage from "./components/MyPage";
 
 export default function App() {
+  const [isLogin, setIsLogin] = useState(false);
+
   return (
     <BrowserRouter>
     
       <Navbar />
       <Routes>
         {/* 모두에게 열려있는 페이지 */}
-        <Route path="/place" element={<Places />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/pwid" element={<Pwid/>} />
+          <Route path="/place" element={<Places />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/pwid" element={<Pwid/>} />
 
         {/* 게스트에게만 열려있는 페이지 */}
         
 
         {/* 로그인이 필요한 페이지 */}
+        
+          <Route path="/mypage" element={<MyPage />} />
           <Route path="/loginmain" element={<LoginMain />} />
           <Route path="/product" element={<Product />} />
-          <Route path="/product/ProductResevation" element={<ProductResevation/>} />
+          <Route to="/product/ProductResevation" element={<ProductResevation/>} />
         {/* 관리자 권한이 필요한 페이지 */}
         
 

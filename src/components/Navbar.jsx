@@ -13,6 +13,7 @@ const Navbar = () => {
         .get("/api/logout")
         .then(() => {
           document.cookie = `username=${loggedInUsername()}; max-age=0`;
+          // localStorage.removeItem('ls')
         })
         .then(() => navigate("/"))
         .catch((err) => console.log(err));

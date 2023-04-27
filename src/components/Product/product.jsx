@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BannerCarousel from './BannerCarousel';
 import PickDatePicker from  './PickDatePicker';
 import ProductReview from  './ProductReview';
 import DropDown2 from './DropDown2';
 import Modal from './Modal';
 
-
+import { useNavigate } from 'react-router-dom';
 
 function Product() {
+    const navigate = useNavigate();
+
+    // useEffect(() => {
+    //     if(!localStorage.getItem('ls')) {
+    //         navigate('/login')
+    //     }
+    // })
+
     const [selectedItems, setSelectedItems] = useState([]);
     const [open, setOpen] = useState(false);
  

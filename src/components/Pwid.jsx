@@ -62,23 +62,31 @@ function Pwid() {
         setErrMsg('');
     }, [user, pwd, matchPwd])
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        console.log(user, pwd, nickname);
-        try {
-            const response = await axios.post('', 
-                JSON.stringify({ user, pwd, nickname }),
-                {
-                    headers: { 'Content-Type': 'application/json'},
-                    withCredentials: true
-                }
-            );
-            console.log(JSON.stringify(response?.data));
-            const accessToken = response?.data?.accessToken;
-            console.log(accessToken);
-          } catch (error) {
-            console.log(error);
-          }
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     console.log(user, pwd, nickname);
+    //     try {
+    //         const response = await axios.post('', 
+    //             JSON.stringify({ user, pwd, nickname }),
+    //             {
+    //                 headers: { 'Content-Type': 'application/json'},
+    //                 withCredentials: true
+    //             }
+    //         );
+    //         console.log(JSON.stringify(response?.data));
+    //         const accessToken = response?.data?.accessToken;
+    //         console.log(accessToken);
+    //       } catch (error) {
+    //         console.log(error);
+    //       }
+    // }
+
+    const handleSubmit = () => {
+        setUser('');
+        setPwd('');
+        setMatchPwd('');
+        setNickname('');
+
     }
 
     return (

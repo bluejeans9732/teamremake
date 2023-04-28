@@ -71,7 +71,7 @@ function Product() {
             <div>
                 <div className="mx-auto w-full bg-blue-300"><BannerCarousel /></div>
                 <div className="mt-4 ml-4">
-                    <div className="font-bold">어디동 어디점</div>
+                    <div className="font-bold">강남점</div>
                     <p className="mt-1 text-xs font-light w-full">경기도 어디동 어디도로 65번길 100</p>
                 </div>
                 
@@ -123,7 +123,6 @@ function Product() {
                 </div>
                 
                 <div className="mt-4 ml-4 mr-4 flex">
-                    <ProductReview />
                     <ProductReview />
                 </div>
 

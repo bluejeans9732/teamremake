@@ -18,6 +18,10 @@ import Home from "./pages/Home";
 import { useState } from "react";
 import MyPage from "./components/MyPage";
 
+import Register from "./components/Resister";
+import Reviews from "./components/Reviews";
+import Footer from "./components/Footer";
+
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
 
@@ -32,8 +36,10 @@ export default function App() {
           <Route path="/login" element={<Login/>} />
           <Route path="/pwid" element={<Pwid/>} />
 
+          <Route path="/reviews" element={<Reviews />} />
+
         {/* 게스트에게만 열려있는 페이지 */}
-        
+        <Route path="/register" element={<Register />} />
 
         {/* 로그인이 필요한 페이지 */}
         
@@ -46,6 +52,7 @@ export default function App() {
 
         {/* 404 페이지 */}
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

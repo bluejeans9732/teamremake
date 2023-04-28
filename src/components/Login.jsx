@@ -3,8 +3,10 @@ import React, { useRef, useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import AXIOS from './axios';
+import ApiManager from './ApiManager';
+import ApiUseUser from './ApiUseUser';
 
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const userRef = useRef();
@@ -22,18 +24,34 @@ function Login() {
         setErrMsg('');
     },[])
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        AXIOS.post('/customer/login', {
-                email:user,
-                password:pwd,
-            })
-            .then((response) => {
-                console.log(response)
-            })
-            .catch((error) => console.log(error.response));
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     ApiUseUser({
+    //         email: user,
+    //         password: pwd
+    //     }).then((result) => {
+    //         if(result.status == 200) {
+    //             localStorage.setItem("AccessToken", result.data.token)
+    //             navigate('/loginmain')
+    //         }
+    //     })
+    //     .catch(error => {
+    //         console.log(error)
+    //     });
+    //     // .catch(err =>{
+    //     //     console.log(err)
+    //     // });
+    //     setUser('');
+    //     setPwd('');
+    // }
+
+    const navigate = useNavigate();
+    
+    const handleSubmit= ()=>{
+        localStorage.setItem('ls', "유진");
         setUser('');
         setPwd('');
+        navigate('/loginmain')
     }
 
     // 로그아웃시 ls에 user 아이디 삭제

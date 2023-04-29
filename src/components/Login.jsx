@@ -26,21 +26,21 @@ function Login() {
 
     // const handleSubmit = (e) => {
     //     e.preventDefault();
-    //     ApiUseUser({
-    //         email: user,
-    //         password: pwd
-    //     }).then((result) => {
-    //         if(result.status == 200) {
-    //             localStorage.setItem("AccessToken", result.data.token)
-    //             navigate('/loginmain')
-    //         }
+    //     axios({
+    //         method: "post",
+    //         url: "http://13.125.223.94:8081/customer/login",
+    //         data: {
+    //             email: user,
+    //             password: pwd,
+    //         },
     //     })
-    //     .catch(error => {
-    //         console.log(error)
+    //     .then((res) => {
+    //         console.log(res);
+
+    //     })
+    //     .catch((error) => {
+    //         console.log(error);
     //     });
-    //     // .catch(err =>{
-    //     //     console.log(err)
-    //     // });
     //     setUser('');
     //     setPwd('');
     // }

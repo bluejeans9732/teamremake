@@ -2,6 +2,8 @@ import React, { useRef, useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+import { useNavigate } from 'react-router-dom';
+
 function Pwid() {
     
     const emailRegex =
@@ -81,13 +83,37 @@ function Pwid() {
     //       }
     // }
 
-    const handleSubmit = () => {
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        // e.preventDefault();
+        // axios({
+        //     method: "post",
+        //     url: "http://13.125.223.94:8081/customer/signup",
+        //     data: {
+        //         email: user,
+        //         password: pwd,
+        //         nickname: nickname,
+        //         // 고정값
+        //         phone: '01000000000',
+        //         name: '홍길동',
+        //     },
+        // })
+        // .then((res) => {
+        //     console.log(res);
+            
+        // })
+        // .catch((error) => {
+        //     console.log(error);
+        // });
+        navigate('/login')
         setUser('');
         setPwd('');
         setMatchPwd('');
         setNickname('');
-
     }
+
+    
 
     return (
         <div className="h-full w-full relative overflow-y-scroll scrollbar-hide flex">

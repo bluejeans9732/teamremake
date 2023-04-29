@@ -1,6 +1,9 @@
 import React from "react";
 
+import { Link } from 'react-router-dom';
+
 function LoginMainReview() {
+    
 
     const ReviewImages = [
         {
@@ -34,13 +37,16 @@ function LoginMainReview() {
                             <h1 className="text-lg font-semibold mb-3">{ReviewImage.title}</h1>
                             <p className="leading-relaxed mb-3">{ReviewImage.main}</p>
                             <div className="flex items-center flex-wrap ">
-                                <a className="text-indigo-300 inline-flex items-center mt-6">자세히 보기
-                                    <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"
-                                        fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                        <path d="M5 12h14"></path>
-                                        <path d="M12 5l7 7-7 7"></path>
-                                    </svg>
-                                </a>
+                                <Link to="/reviews">
+                                    <div className="text-indigo-300 inline-flex items-center mt-6" >자세히 보기
+                                        <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"
+                                            fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M5 12h14"></path>
+                                            <path d="M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </div>
+                                </Link>
+                                
                             </div>
                         </div>
                     </div>

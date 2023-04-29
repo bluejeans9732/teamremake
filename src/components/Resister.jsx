@@ -104,28 +104,28 @@ export default function Register() {
         </div>
   ​
         <form>
-        <input type="checkbox" id="cancel-modal" className="modal-toggle" />
+          <input type="checkbox" id="cancel-modal" className="modal-toggle" />
           <div className="modal">
-          <div className="modal-box">
-          <h3 className="font-bold text-lg">작성을 취소하였습니다.</h3>
-          <div className="modal-action">
-          <label htmlFor="cancel-modal" className="btn btn-outline btn-primary"><a href="/reviews">Ok</a></label>
-          </div>
-          </div>
+            <div className="modal-box">
+              <h3 className="font-bold text-lg">작성을 취소하였습니다.</h3>
+              <div className="modal-action">
+                <label htmlFor="cancel-modal" className="btn btn-outline btn-primary"><a href="/reviews">Ok</a></label>
+              </div>
+            </div>
           </div>
         </form>
   ​
         <form>
-        <input type="checkbox" id="save-modal" className="modal-toggle" />
-          <div className="modal">
-          <div className="modal-box">
-          <h3 className="font-bold text-lg">리뷰가 등록되었습니다.</h3>
-          <div className="modal-action">
-          <label htmlFor="save-modal" className="btn btn-outline btn-primary"><a href="/reviews">Yay!</a></label>
-          </div>
-          </div>
-          </div>
+          <input type="checkbox" id="save-modal" className="modal-toggle" />
+            <div className="modal">
+            <div className="modal-box">
+            <h3 className="font-bold text-lg">리뷰가 등록되었습니다.</h3>
+            <div className="modal-action">
+            <label htmlFor="save-modal" className="btn btn-outline btn-primary"><a href="/reviews">Yay!</a></label>
+            </div>
+            </div>
+            </div>
+          </form>
         </form>
-      </form>
     )
   };

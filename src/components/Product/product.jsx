@@ -66,7 +66,7 @@ function Product() {
     localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
     
     return (
-      <div className="h-screen overflow-y-scroll scrollbar-hide relative bg-gray-100">
+      <div className="min-h-[100%] overflow-y-scroll scrollbar-hide relative bg-gray-100">
         <div className="flex flex-col mx-auto bg-white w-2/5 ">
             <div>
                 <div className="mx-auto w-full bg-blue-300"><BannerCarousel /></div>

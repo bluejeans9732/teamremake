@@ -32,7 +32,7 @@ function ProductResevation() {
         const formattedDate = dateObj.toLocaleString("ko-KR", options);
     
         setStartDate(formattedDate);
-    }, []);
+    }, [startDate]);
 
     const savedSelectedItems = JSON.parse(localStorage.getItem("selectedItems"));
 
@@ -48,6 +48,12 @@ function ProductResevation() {
         };
     }
 
+    const storedStartDate = localStorage.getItem("startDate");
+    const formattedStartDate = storedStartDate.replace("T", " ");
+    const dateObj = new Date(formattedStartDate);
+        const options = { year: "numeric", month: "long", day: "numeric", hour: "numeric", hour12: true };
+        const formattedDate = dateObj.toLocaleString("ko-KR", options);
+    
     console.log(startDate)
     console.log(savedSelectedItems)
 
@@ -104,7 +110,7 @@ function ProductResevation() {
                         <div className="font-bold mt-4">예약 정보</div>
                         <div>
                             <div className="mt-3 mb-2 text-xs font-bold">예약 시간</div>
-                            {startDate}
+                            {formattedDate}
                         </div>
                         <div>
                             <div className="mt-3 mb-2 text-xs font-bold">예약 물품</div>

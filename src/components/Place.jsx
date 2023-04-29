@@ -5,7 +5,7 @@ const Place = ({ _id, placeName, desc, image }) => {
 
   return (
     <div
-      className=" place-container grid grid-cols-5 h-1/5 rounded-lg py-3 hover:cursor-pointer"
+      className="place-container grid grid-cols-5 h-1/5 rounded-lg py-3 hover:cursor-pointer "
       onClick={() => navigate(`/place/${_id}`)}
     >
       <div className="image col-span-1 rounded-lg bg-base-200 overflow-hidden">

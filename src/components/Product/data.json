@@ -1,0 +1,82 @@
+{
+    "productItem": [
+        {
+            "id": "1",
+            "title": "강남점",
+            "address" : "강남구 강남 강남",
+            "open" : 9,
+            "close" : 18,
+            "product": {
+                "엔진 오일": "50,000원",
+                "브레이크 필터": "94,000원",
+                "연료 필터" : "100,100원",
+                "브레이크 오일" : "58,700원"
+            },
+            "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-card-40-iphone14pro-202209_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95&.v=1663611329204"
+        },
+        {
+            "id": "2",
+            "title": "성남점",
+            "address" : "성남 매우성남",
+            "open" : 8,
+            "close" : 17,
+            "product": {
+                "브레이크 필터": "94,000원",
+                "타이어" : "50,000원",
+                "벨트" : "52,600원",
+                "부동액 " : "54,500원"
+            },
+            "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-card-40-iphone14pro-202209_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95&.v=1663611329204"
+        },
+        {
+            "id": "3",
+            "title": "강북점",
+            "address" : "강북이 강북멋쟁이",
+            "open" : 8,
+            "close" : 20,
+            "product": {
+                "엔진 오일": "50,000원",
+                "브레이크 필터": "94,000원",
+                "배터리" : "264,900원",
+                "타이어" : "50,000원"
+            },
+            "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-card-40-iphone14pro-202209_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95&.v=1663611329204"
+        },
+        {
+            "id": "4",
+            "title": "강서점",
+            "address" : "강서 강이 서쪽",
+            "open" : 9,
+            "close" : 20,
+            "product": {
+                "엔진 오일": "50,000원",
+                "브레이크 필터": "94,000원"
+            },
+            "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-card-40-iphone14pro-202209_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95&.v=1663611329204"
+        },
+        {
+            "id": "5",
+            "title": "강동점",
+            "address" : "강동이 감동해",
+            "open" : 9,
+            "close" : 15,
+            "product": {
+                "엔진 오일": "50,000원",
+                "브레이크 필터": "94,000원"
+            },
+            "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-card-40-iphone14pro-202209_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95&.v=1663611329204"
+        },
+        {
+            "id": "6",
+            "title": "일산점",
+            "address" : "일산구 피바다",
+            "open" : 9,
+            "close" : 10,
+            "product": {
+                "엔진 오일": "50,000원",
+                "브레이크 필터": "94,000원"
+            },
+            "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-card-40-iphone14pro-202209_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95&.v=1663611329204"
+        }
+    ]
+}

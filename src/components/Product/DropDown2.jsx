@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { ProductAtom } from '../../Recoil/productAtom';
 
 // product아래에 예약 물품 dropdown 함수입니다
 
-function DropDown2({ title, items, onDropdownChange }) {
+function DropDown2({ title, onDropdownChange }) {
+  const product = useRecoilValue(ProductAtom);
+  const items = product.map(({ name, price }) => ({ id: name, label: name, price }));
+
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -47,6 +52,5 @@ function DropDown2({ title, items, onDropdownChange }) {
     </div>
   );
 }
-
 
 export default DropDown2;

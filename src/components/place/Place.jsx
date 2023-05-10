@@ -10,7 +10,7 @@ const Place = ({ _id, placeName, desc, image }) => {
     >
       <div className="image col-span-1 rounded-lg bg-base-200 overflow-hidden">
         <img
-          className="object-cover w-full h-full"
+          className="object-cover w-full h-full border-2"
           src={image}
           alt={`${placeName} 업체사진`}
         />

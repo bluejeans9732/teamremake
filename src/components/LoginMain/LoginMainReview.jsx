@@ -23,13 +23,31 @@ function LoginMainReview() {
           "image": "https://cdn.weekly.chosun.com/news/photo/202209/22294_43148_3422.jpg",
           "title" : "사장님이 착해요",
           "main" : "착해서 공짜로 고쳐줬어요"
+        },
+        {
+            "id": "4",                
+            "image": "https://www.womennews.co.kr/news/photo/202201/219795_358815_013.jpg",
+            "title" : "타이어 나스닥보다 싸다",
+            "main" : "나스닥에 돈 쓰느니 타이어에 씁니다"
+        },
+        {
+            "id": "5",
+            "image": "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQKp5ZsMFTZZrNFb_p2mduiKPipCDh7meawj_zla0mhOHNi_07O3TcMv-q-H-HBvH2G",
+            "title" : "친절하다 사장님",
+            "main" : "배터리 교체 해줬다 공짜로 친절하다 싸장님"
+        },
+        {
+            "id": "6",
+            "image": "https://cdn.aitimes.kr/news/photo/202302/27337_41159_1922.jpg",
+            "title" : "별 5개 드려요",
+            "main" : "리뷰이벤트 꼭꼭 챙겨주세요"
         }
-      ];
+    ];
       
       return (
         <>
             {ReviewImages.map((ReviewImage) => (
-                <div key={ReviewImage.id} className="ml-6 w-[300px] h-[400px]">
+                <div key={ReviewImage.id} className="ml-6 w-[300px] h-[400px] mt-10">
                     <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                         <img className="w-[300px] h-[200px] object-cover object-center"
                             src={ReviewImage.image} alt="blog" />

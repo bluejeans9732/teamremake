@@ -1,4 +1,19 @@
+import { useEffect, useState } from "react"
+
+const datas = [
+    {
+        id: 0,
+        date: "2023.04.11",
+        username: "권명찬",
+        sellername: "금호타이어",
+        title: "처음 이용해보았는데 만족합니다.",
+
+    },
+]
+
 export default function Reviews() {
+    
+
     return (
         <div className="w-3/4 h-full mx-auto">
         <h2 className="leading-7 text-gray-900 text-lg mt-5 ml-3 pb-1">리뷰게시판</h2>
@@ -16,25 +31,66 @@ export default function Reviews() {
           </thead>
           <tbody>
             {/* row 1 */}
+            {
+                datas.map((data) => (
+                    
+                        <tr key={data.id}>
+                            <th> {data.date} </th>
+                            <td>
+                                <div className="flex items-center space-x-3">
+                                <div>
+                                <div className="font-bold">{data.sellername}</div>
+                                <div className="text-sm opacity-50">{data.username}</div>
+                                </div>
+                                </div>
+                            </td>
+                            <td>
+                                {data.title}
+                                <br/>
+                            </td>
+                            <td><div className="rating rating-md rating-half">
+                                <input type="radio" name="rating-1" className="rating-hidden" />
+                                <input type="radio" name="rating-1" className="bg-yellow-500 mask mask-star-2 mask-half-1" />
+                                <input type="radio" name="rating-1" className="bg-yellow-500 mask mask-star-2 mask-half-2" />
+                                <input type="radio" name="rating-1" className="bg-yellow-500 mask mask-star-2 mask-half-1"  />
+                                <input type="radio" name="rating-1" className="bg-yellow-500 mask mask-star-2 mask-half-2" />
+                                <input type="radio" name="rating-1" className="bg-yellow-500 mask mask-star-2 mask-half-1" />
+                                <input type="radio" name="rating-1" className="bg-yellow-500 mask mask-star-2 mask-half-2" />
+                                <input type="radio" name="rating-1" className="bg-yellow-500 mask mask-star-2 mask-half-1" />
+                                <input type="radio" name="rating-1" className="bg-yellow-500 mask mask-star-2 mask-half-2" />
+                                <input type="radio" name="rating-1" className="bg-yellow-500 mask mask-star-2 mask-half-1" />
+                                <input type="radio" name="rating-1" className="bg-yellow-500 mask mask-star-2 mask-half-2" checked/>
+                                </div>
+                            </td>
+                            <th>
+                            <div class="flex-none">
+                                <label htmlFor="datails-modal" className="btn btn-ghost btn-xs">details</label>
+                            </div>
+                            </th>
+                        </tr>
+                    
+                    
+                ))
+            }
             <tr>
                 <th> 2023.04.11</th>
                 <td>
                     <div className="flex items-center space-x-3">
                     <div>
                     <div className="font-bold">한국타이어</div>
-                    <div className="text-sm opacity-50">김유진</div>
+                    <div className="text-sm opacity-50">유진</div>
                     </div>
                     </div>
                 </td>
                 <td>
-                    처음 이용해보았는데 만족합니다.
+                    아 이건 좀..
                     <br/>
                 </td>
                 <td><div className="rating rating-md rating-half">
                     <input type="radio" name="rating-1" className="rating-hidden" />
                     <input type="radio" name="rating-1" className="bg-yellow-500 mask mask-star-2 mask-half-1" />
                     <input type="radio" name="rating-1" className="bg-yellow-500 mask mask-star-2 mask-half-2" />
-                    <input type="radio" name="rating-1" className="bg-yellow-500 mask mask-star-2 mask-half-1" checked />
+                    <input type="radio" name="rating-1" className="bg-yellow-500 mask mask-star-2 mask-half-1" checked/>
                     <input type="radio" name="rating-1" className="bg-yellow-500 mask mask-star-2 mask-half-2" />
                     <input type="radio" name="rating-1" className="bg-yellow-500 mask mask-star-2 mask-half-1" />
                     <input type="radio" name="rating-1" className="bg-yellow-500 mask mask-star-2 mask-half-2" />
@@ -50,6 +106,7 @@ export default function Reviews() {
                 </div>
                 </th>
             </tr>
+            
     </tbody></table></div>
     <div className="flex mt-12 mb-12 mr-10 justify-end ">
     <button className="btn btn-outline btn-primary"><a href="/register">리뷰 작성하기</a></button>

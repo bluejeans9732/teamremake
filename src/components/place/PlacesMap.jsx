@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { MapContainer } from "../utils/MapContainer";
+import { MapContainer } from "../../utils/MapContainer";
 const { kakao } = window;
 
 const PlacesMap = ({ height, data }) => {

@@ -1,3 +1,10 @@
+const adLs= ()=>{
+  localStorage.setItem('reviewid', "1");
+  localStorage.setItem('reviewdate', "2023.04.11");
+  localStorage.setItem('reviewname', "유진");
+  localStorage.setItem('reviewtitle', "정말 별로지만..");
+}
+
 export default function Register() {
     return (
       <form>
@@ -14,8 +21,15 @@ export default function Register() {
                   Username
                 </label>
                 <div className="mt-2">
-                  <div className="block flex-1 border-0 bg-transparent py-1.5 pl-1 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                    <span className="flex select-none items-center ml-2 text-gray-500 sm:text-sm">등록되어있는 이름(고정값)</span>
+                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                      <input
+                        type="text"
+                        name="shopname"
+                        id="shopname"
+                        autoComplete="shopname"
+                        className="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                        placeholder="이름을 적어주세요."
+                      />
                   </div>
                 </div>
               </div>
@@ -65,7 +79,7 @@ export default function Register() {
                     id="about"
                     name="about"
                     rows={7}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     defaultValue={''}
                   />
                 </div>
@@ -121,7 +135,7 @@ export default function Register() {
             <div className="modal-box">
             <h3 className="font-bold text-lg">리뷰가 등록되었습니다.</h3>
             <div className="modal-action">
-            <label htmlFor="save-modal" className="btn btn-outline btn-primary"><a href="/reviews">Yay!</a></label>
+            <button htmlFor="save-modal" className="btn btn-outline btn-primary" onClick={adLs()}><a href="/reviews">Yay!</a></button>
             </div>
             </div>
             </div>

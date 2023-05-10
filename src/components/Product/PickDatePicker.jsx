@@ -5,15 +5,19 @@ import DatePicker from "react-datepicker";
 import './practice.css';
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { OpenAtom, TimeAtom } from '../../Recoil/productAtom';
 
 // product에 들어가는 달력 날짜 함수입니다 + 시간 합쳤습니다.
 
 function PickDatePicker () {
+    const setTimeCheck = useSetRecoilState(TimeAtom);
+    const openClose = useRecoilValue(OpenAtom);
+
     const [startDate, setStartDate] = useState(
         setHours(setMinutes(new Date(), 0), 9)
     );
-    
-    localStorage.setItem("startDate", JSON.stringify(startDate));
+    setTimeCheck(startDate)
 
     const filterPassedTime = (time) => {
         const currentDate = new Date();
@@ -39,8 +43,8 @@ function PickDatePicker () {
             timeFormat="HH:mm"
             timeIntervals={60}
             timeCaption="time"
-            minTime={setHours(setMinutes(new Date(), 0), 9)}
-            maxTime={setHours(setMinutes(new Date(), 0), 17)}
+            minTime={setHours(setMinutes(new Date(), 0), `${openClose.open}`)}
+            maxTime={setHours(setMinutes(new Date(), 0), `${openClose.close}`)}
             customInput={<ExampleCustomInput />}
             minDate={new Date()}
             filterTime={filterPassedTime}

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { SelectAtom, TimeAtom } from "../../Recoil/productAtom";
 
 function ProductResevation() {
 
@@ -6,6 +8,10 @@ function ProductResevation() {
     const [address, setAddress] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [startDate, setStartDate] = useState("");
+
+    const selectedItems = useRecoilValue(SelectAtom);
+    const timeCheck = useRecoilValue(TimeAtom);
+    
     
     const handlePress = (e) => {
         const regex = /^[0-9\b -]{0,13}$/;
@@ -23,19 +29,7 @@ function ProductResevation() {
         }
     }, [phoneNumber]);
 
-    useEffect(() => {
-        const storedStartDate = localStorage.getItem("startDate");
-        const formattedStartDate = storedStartDate.replace("T", " ");
     
-        const dateObj = new Date(formattedStartDate);
-        const options = { year: "numeric", month: "long", day: "numeric", hour: "numeric", hour12: true };
-        const formattedDate = dateObj.toLocaleString("ko-KR", options);
-    
-        setStartDate(formattedDate);
-    }, [startDate]);
-
-    const savedSelectedItems = JSON.parse(localStorage.getItem("selectedItems"));
-
     function handleSubmit(e) {
         e.preventDefault();
         const reservationData = {
@@ -43,29 +37,31 @@ function ProductResevation() {
             address: address,
             phoneNumber: phoneNumber,
             time: startDate,
-            item: savedSelectedItems,
+            item: selectedItems,
             price: totalPrice,
         };
     }
 
-    const storedStartDate = localStorage.getItem("startDate");
-    const formattedStartDate = storedStartDate.replace("T", " ");
-    const dateObj = new Date(formattedStartDate);
-        const options = { year: "numeric", month: "long", day: "numeric", hour: "numeric", hour12: true };
-        const formattedDate = dateObj.toLocaleString("ko-KR", options);
+    const date = timeCheck
+    const year = date.getFullYear(); // 2023
+    const month = date.getMonth() + 1; // 월은 0부터 시작하므로 1을 더해줍니다.
+    const day = date.getDate(); // 18
+    const hours = date.getHours(); // 11
+    const minutes = date.getMinutes(); // 0
+
+    const formattedDate = `${year}년 ${month}월 ${day}일 ${hours}시 ${minutes}분`;
     
-    console.log(startDate)
-    console.log(savedSelectedItems)
+   
 
     const [totalPrice, setTotalPrice] = useState(0);
     
     useEffect(() => {
         let total = 0;
-        savedSelectedItems.forEach(item => {
-          total += item.price * item.quantity;
+        selectedItems.forEach(item => {
+          total += parseInt(item.price.replace(/,/g, '')) * item.quantity; 
         });
         setTotalPrice(total);
-    }, [savedSelectedItems]);
+    }, [selectedItems]);
 
     return (
         <div className="h-full w-full overflow-y-scroll scrollbar-hide relative bg-gray-100">
@@ -84,17 +80,7 @@ function ProductResevation() {
                             autoComplete="off"
                             className="rounded-md  mt-1 border-2 border-slate-300 w-full h-10 outline-none focus:bg-cyan-50 p-3 focus:border-blue-500"
                         />
-                        {/* <label htmlFor="address" className="mt-3 text-xs font-light">주소</label>
-                        <input 
-                            type="text" 
-                            id="address" 
-                            value={address} 
-                            onChange={e => setAddress(e.target.value)} 
-                            required
-                            autoComplete="off"
-                            className="rounded-md  mt-1 border-2 border-slate-300 w-full h-10 outline-none focus:bg-cyan-50 p-3 focus:border-blue-500"
-                        /> */}
-
+                        
                         <label htmlFor="phonenumber" className="mt-3 text-xs font-light">핸드폰 번호</label>
                         <input 
                             type="text" 
@@ -114,7 +100,7 @@ function ProductResevation() {
                         </div>
                         <div>
                             <div className="mt-3 mb-2 text-xs font-bold">예약 물품</div>
-                            {savedSelectedItems.map((item) => (
+                            {selectedItems.map((item) => (
                                 <div key={item.id} className='flex flex-row mt-1'>
                                     {item.label} <p className='ml-5'>수량 : {item.quantity}개</p>
                                 </div>

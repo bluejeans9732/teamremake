@@ -1,8 +1,8 @@
 const features = [
-  { name: '타이어 샵', description: 'Designed by Good Goods, Inc.' },
-  { name: '엔진오일 샵', description: 'Solid walnut base with rare earth magnets and powder coated steel card cover' },
-  { name: '정기검진', description: '6.25" x 3.55" x 1.15"' },
-  { name: '자동차 관리', description: 'Hand sanded and finished with natural oil' },
+  { name: '강남점', description: '타어이 교체 2회', date: '2022년 4월 11일' },
+  { name: '성남점', description: '엔진오일 교체, 벨트 교체', date: '2022년 9월 11일' },
+  { name: '강북점', description: '브레이크 오일 교체', date: '2022년 12월 11일' },
+  { name: '강서점', description: '브레이크 필터 교체', date: '2023년 4월 11일' },
 ]
 const features2 = [
   { name: '레이', description: 'Designed by Good Goods, Inc.' },
@@ -11,16 +11,16 @@ const features2 = [
   { name: '지프', description: 'Hand sanded and finished with natural oil' },
 ]
 const features3 = [
-  { name: '글1', description: 'Designed by Good Goods, Inc.' },
-  { name: '글2', description: 'Solid walnut base with rare earth magnets and powder coated steel card cover' },
+  { name: '정말 좋았어요', description: '사장님이 정말 친절하고 가격이 친절했어요' },
+  { name: '아 이건 좀..', description: '정말 너무한거같아요..' },
 ]
 const features4 = [
-  { name: '즐찾1', description: 'Designed by Good Goods, Inc.' },
-  { name: '즐찾2', description: 'Solid walnut base with rare earth magnets and powder coated steel card cover' },
-  { name: '즐찾3', description: '6.25" x 3.55" x 1.15"' },
-  { name: '즐찾4', description: 'Hand sanded and finished with natural oil' },
-  { name: '즐찾5', description: 'Wood card tray and 3 refill packs' },
-  { name: '즐찾6', description: 'Made from natural materials. Grain and color vary with each item.' },
+  { name: '강남점', description: 'Designed by Good Goods, Inc.', "main" : "율현동 108-9번지 101호 강남구" },
+  { name: '성남점', description: 'Solid walnut base with rare earth magnets and powder coated steel card cover',"main": "수정구 태평동 7123-9번지 1층 " },
+  { name: '강북점', description: '6.25" x 3.55" x 1.15"', "main": "서울특별시 강북구 미아동 158-41" },
+  { name: '강서점', description: 'Hand sanded and finished with natural oil', "main": "가양동 195-5번지 1층 강서구 " },
+  { name: '강동점', description: 'Wood card tray and 3 refill packs', "main": "길동 109번지 1호 강동구 "},
+  { name: '일산점', description: 'Made from natural materials. Grain and color vary with each item.', "main": "경기도 고양시 일산동구 백석동 1210-3"},
 ]
 export default function MyPage() {
   return (
@@ -53,10 +53,11 @@ export default function MyPage() {
                             <p className="mt-4 text-gray-500">
                               나의 예약 내역들을 보고 확인할 수 있습니다.
                             </p>
-                            <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
+                            <dl className="mt-16 flex flex-col">
                               {features.map((feature) => (
-                                <div key={feature.name} className="border-t border-gray-200 pt-4">
+                                <div key={feature.name} className="border-t border-b border-gray-200 p-4">
                                   <dt className="font-medium text-gray-900">{feature.name}</dt>
+                                  <dt className="font-thin text-sm text-gray-900 mt-2">{feature.date}</dt>
                                   <dd className="mt-2 text-sm text-gray-500">{feature.description}</dd>
                                 </div>
                               ))}
@@ -91,7 +92,7 @@ export default function MyPage() {
                               {features2.map((feature) => (
                                 <div key={feature.name} className="border-t border-gray-200 pt-4">
                                   <dt className="font-medium text-gray-900">{feature.name}</dt>
-                                  <dd className="mt-2 text-sm text-gray-500">{feature.description}</dd>
+                                  {/* <dd className="mt-2 text-sm text-gray-500">{feature.description}</dd> */}
                                 </div>
                               ))}
                             </dl>
@@ -121,9 +122,9 @@ export default function MyPage() {
                             <p className="mt-4 text-gray-500">
                               내가 그동안 썼던 리뷰들을 모아서 간편하게 볼 수 있습니다.
                             </p>
-                            <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
+                            <dl className="mt-16 flex flex-col">
                               {features3.map((feature) => (
-                                <div key={feature.name} className="border-t border-gray-200 pt-4">
+                                <div key={feature.name} className="border-t border-b border-gray-200 p-4">
                                   <dt className="font-medium text-gray-900">{feature.name}</dt>
                                   <dd className="mt-2 text-sm text-gray-500">{feature.description}</dd>
                                 </div>
@@ -159,7 +160,8 @@ export default function MyPage() {
                               {features4.map((feature) => (
                                 <div key={feature.name} className="border-t border-gray-200 pt-4">
                                   <dt className="font-medium text-gray-900">{feature.name}</dt>
-                                  <dd className="mt-2 text-sm text-gray-500">{feature.description}</dd>
+                                  {/* <dd className="mt-2 text-sm text-gray-500">{feature.description}</dd> */}
+                                  <dd className="mt-2 text-sm text-gray-500">{feature.main}</dd>
                                 </div>
                               ))}
                             </dl>

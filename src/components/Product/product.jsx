@@ -1,34 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import BannerCarousel from './BannerCarousel';
 import PickDatePicker from  './PickDatePicker';
 import ProductReview from  './ProductReview';
 import DropDown2 from './DropDown2';
 import Modal from './Modal';
 
-import { useNavigate } from 'react-router-dom';
+import data from './data.json'
+
+import {  useParams } from 'react-router-dom';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { OpenAtom, ProductAtom, SelectAtom } from '../../Recoil/productAtom';
 
 function Product() {
-    const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     if(!localStorage.getItem('ls')) {
-    //         navigate('/login')
-    //     }
-    // })
+    const { id } = useParams(); // URL 파라미터에서 id 값을 가져옴
+    const productPage = data.productItem[id]
 
-    const [selectedItems, setSelectedItems] = useState([]);
+    const setProduct = useSetRecoilState(ProductAtom);
+    const setOpenClose = useSetRecoilState(OpenAtom);
+    setOpenClose(productPage)
+
+    const [selectedItems, setSelectedItems] = useRecoilState(SelectAtom);
     const [open, setOpen] = useState(false);
  
-    const items = [
-        { id: 1, label: '엔진 오일', price: 50000 },
-        { id: 2, label: '브레이크 필터', price: 94000 },
-        { id: 3, label: '연료 필터', price: 100100 },
-        { id: 4, label: '브레이크 오일', price: 58700 },
-        { id: 5, label: '부동액', price: 54500 },
-        { id: 6, label: '배터리', price: 264900 },
-        { id: 7, label: '벨트', price: 52600 },
-        { id: 8, label: '타이어', price: 50000 },
-    ];
+    const items = Object.entries(productPage.product).map(([key, value]) => ({ name: key, price: value }));
+    setProduct(items)
+    
+    
 
     const handleDropdownChange = (item) => {
         const index = selectedItems.findIndex((selectedItem) => selectedItem.id === item.id);
@@ -49,21 +47,21 @@ function Product() {
     const handleItemIncrement = (item) => {
         const index = selectedItems.findIndex((selectedItem) => selectedItem.id === item.id);
         const updatedItems = [...selectedItems];
-        updatedItems[index].quantity++;
+        updatedItems[index] = { ...updatedItems[index], quantity: updatedItems[index].quantity + 1 };
         setSelectedItems(updatedItems);
     };
-
-    const handleItemDecrement = (item) => {
+      
+      const handleItemDecrement = (item) => {
         const index = selectedItems.findIndex((selectedItem) => selectedItem.id === item.id);
         const updatedItems = [...selectedItems];
-        updatedItems[index].quantity--;
+        updatedItems[index] = { ...updatedItems[index], quantity: updatedItems[index].quantity - 1 };
         if (updatedItems[index].quantity === 0) {
-            updatedItems.splice(index, 1);
+          updatedItems.splice(index, 1);
         }
         setSelectedItems(updatedItems);
     };
 
-    localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
+    
     
     return (
       <div className="min-h-[100%] overflow-y-scroll scrollbar-hide relative bg-gray-100">
@@ -71,15 +69,15 @@ function Product() {
             <div>
                 <div className="mx-auto w-full bg-blue-300"><BannerCarousel /></div>
                 <div className="mt-4 ml-4">
-                    <div className="font-bold">강남점</div>
-                    <p className="mt-1 text-xs font-light w-full">경기도 어디동 어디도로 65번길 100</p>
+                    <div className="font-bold">{productPage.title}</div>
+                    <p className="mt-1 text-xs font-light w-full">{productPage.address}</p>
                 </div>
                 
                 
                 <div className="mt-10 mx-auto w-3/5 h-full">
                     <div className="flex flex-col  ">
                         <div className="w-40 h-32 mx-auto">
-                            <img src="./image/carcenterOner.jpg" className="rounded-full " />
+                            <img src="../../image/carcenterOner.jpg" className="rounded-full " />
                         </div>
                         <div className="w-full h-full ml-1 font-bold">
                             <p>초보 운전자들을 위한 카센터</p>
@@ -95,21 +93,21 @@ function Product() {
                 <div className="mt-4 ml-4">
                     <h1 className="font-bold">가격정보</h1>
                     <div className="mt-4 ml-2">
-                        <div className="mt-1">엔진 오일 : 50,000원</div>
-                        <div className="mt-1">브레이크 필터  : 94,000원</div>
-                        <div className="mt-1">연료 필터 : 100,100원</div>
-                        <div className="mt-1">브레이크 오일 : 58,700원</div>
-                        <div className="mt-1">부동액 : 54,500원</div>
-                        <div className="mt-1">배터리 : 264,900원</div>
-                        <div className="mt-1">벨트 : 52,600원</div>
-                        <div className="mt-1">타이어 : 50,000원</div>
+                       {
                         
+                            items.map((a,i)=>{
+                                return (
+                                    <div key={i} className="mt-1">{items[i].name} : {items[i].price}</div>
+                                )
+                                
+                            })
+                       }
                     </div>
                 </div>
                 <div className="mt-6 ml-4">
                     <h1 className="font-bold">매장 정보</h1>
                     <div className="mt-4 ml-2">
-                        <div className="mt-1">오픈시간 : 9 ~ 18시</div>
+                        <div className="mt-1">오픈시간 : {productPage.open} ~ {productPage.close}시</div>
                         <div className="mt-1">예약은 한시간 단위로 열립니다.</div>
                     </div>
                     
@@ -137,7 +135,6 @@ function Product() {
                         <div>
                             <DropDown2
                                 title="선택하세요"
-                                items={items}
                                 onDropdownChange={handleDropdownChange}
                                 
                             />

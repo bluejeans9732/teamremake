@@ -6,39 +6,31 @@ import LoginMainNews from "./LoginMainNews"
 import Mainpicture from './Mainpicture'
 import UnderPicture from './UnderPicture'
 
-import { useNavigate } from 'react-router-dom';
-
 
 function LoginMain() {
 
-     const navigate = useNavigate();
 
-     // useEffect(() => {
-     //      if(!localStorage.getItem('ls')) {
-     //           navigate('/login')
-     //      }
-     // })
-
+     
      const carouselRef = useRef(null);
      const reviewRef = useRef(null);
      const newsRef = useRef(null);
 
      const handleCarouselClick = () => {
-     if (carouselRef.current) {
-          carouselRef.current.scrollIntoView({ behavior: "smooth" });
-     }
+          if (carouselRef.current) {
+               carouselRef.current.scrollIntoView({ behavior: "smooth" });
+          }
      };
 
      const handleReviewClick = () => {
-     if (reviewRef.current) {
-          reviewRef.current.scrollIntoView({ behavior: "smooth" });
-     }
+          if (reviewRef.current) {
+               reviewRef.current.scrollIntoView({ behavior: "smooth" });
+          }
      };
 
      const handleNewsClick = () => {
-     if (newsRef.current) {
-          newsRef.current.scrollIntoView({ behavior: "smooth" });
-     }
+          if (newsRef.current) {
+               newsRef.current.scrollIntoView({ behavior: "smooth" });
+          }
      };
 
      return (
@@ -53,7 +45,7 @@ function LoginMain() {
                          />
                     </div>
 
-                    <div className="mx-auto mt-[100px] w-3/4 py-12 h-[80vh]" ref={carouselRef}>
+                    <div className="mx-auto mt-[100px] w-3/4 py-12 h-[70vh]" ref={carouselRef}>
                          
                          <Carousel  />
                          
@@ -69,14 +61,14 @@ function LoginMain() {
                                    </div>
 
                               </div>
-                              <div className="flex flex-wrap -m-4">
+                              <div className="flex flex-wrap -m-4 mb-4">
                                    <LoginMainReview />
                               </div>
                          </section>
                          
                     </div>
 
-                    <div className="h-[80vh]" ref={newsRef}>
+                    <div className="h-[80vh] mt-80" ref={newsRef}>
                          <section className="flex flex-col items-center text-gray-600 w-3/4 mx-auto">
                               <div className="container flex  mx-auto">
 

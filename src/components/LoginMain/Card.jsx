@@ -8,32 +8,38 @@ function Card() {
             {
                 "id": "1",
                 "name": "강남점",
-                "image": "https://www.filmmakers.co.kr/files/attach/images/2021/06/28/41efb4505d29188bbb96ed9de005307a.jpg"
+                "image": "https://www.filmmakers.co.kr/files/attach/images/2021/06/28/41efb4505d29188bbb96ed9de005307a.jpg",
+                "main" : "율현동 108-9번지 101호 강남구"
             },
             {
                 "id": "2",
                 "name": "성남점",
-                "image": "https://www.filmmakers.co.kr/files/attach/images/2021/06/28/9c6b45589227849d0ab635061e57b546.jpg"
+                "image": "https://www.filmmakers.co.kr/files/attach/images/2021/06/28/9c6b45589227849d0ab635061e57b546.jpg",
+                "main": "수정구 태평동 7123-9번지 1층 "
             },
             {
                 "id": "3",
                 "name": "강북점",
-                "image": "https://www.filmmakers.co.kr/files/attach/images/2021/06/28/29b309524d8517809273777ac6521c5b.jpg"
+                "image": "https://www.filmmakers.co.kr/files/attach/images/2021/06/28/29b309524d8517809273777ac6521c5b.jpg",
+                "main": "서울특별시 강북구 미아동 158-41"
             },
             {
                 "id": "4",
                 "name": "강서점",
-                "image": "https://www.filmmakers.co.kr/files/attach/images/2021/06/28/0a0bb90ba498b1f54ef88b104c26f7f4.jpg"
+                "image": "https://www.filmmakers.co.kr/files/attach/images/2021/06/28/0a0bb90ba498b1f54ef88b104c26f7f4.jpg",
+                "main": "가양동 195-5번지 1층 강서구 "
             },
             {
                 "id": "5",
                 "name": "강동점",
-                "image": "https://www.filmmakers.co.kr/files/attach/images/2021/06/28/374443df999292384a1db5d4abba6049.jpg"
+                "image": "https://www.filmmakers.co.kr/files/attach/images/2021/06/28/374443df999292384a1db5d4abba6049.jpg",
+                "main": "길동 109번지 1호 강동구 "
             },
             {
                 "id": "6",
                 "name": "일산점",
-                "image": "https://www.filmmakers.co.kr/files/attach/images/2021/06/28/838a2ee8a2f86b0cb22358cb2f5450d4.jpg"
+                "image": "https://www.filmmakers.co.kr/files/attach/images/2021/06/28/838a2ee8a2f86b0cb22358cb2f5450d4.jpg",
+                "main": "경기도 고양시 일산동구 백석동 1210-3"
             }
     ]
 
@@ -62,9 +68,10 @@ function Card() {
               </div>
               <div className="bottom flex flex-col justify-center items-start p-3">
                 <div className="font-bold text-md my-1">{data.name}</div>
+                <div className="text-sm mt-2">{data.main}</div>
       
-                <div className="mx-auto my-2">
-                    <Link to="/product">
+                <div className="mx-auto my-2 mt-4">
+                    <Link to={`/product/${index}`}>
                         <button className="border-2 px-3 py-1 text-xs rounded-lg mr-1 ">
                             바로 가기
                         </button>

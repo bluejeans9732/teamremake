@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { MapContainer } from "../utils/MapContainer";
+import { MapContainer } from "../../utils/MapContainer";
 
 const { kakao } = window;
 
-const DetailMap = ({ lat, lng, placeName, width, height }) => {
+const KakaoDetailMap = ({ lat, lng, placeName, width, height }) => {
   useEffect(() => {
     // 지도 생성
     const map = MapContainer(4);
@@ -37,4 +37,4 @@ const DetailMap = ({ lat, lng, placeName, width, height }) => {
   );
 };
 
-export default DetailMap;
+export default KakaoDetailMap;

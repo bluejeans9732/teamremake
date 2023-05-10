@@ -12,7 +12,6 @@ function Pwid() {
     const nickRegex = /^[ㄱ-ㅎ|가-힣]+$/; //한글만
     
     const userRef = useRef();
-    const errRef = useRef();
 
     const [user, setUser] = useState('');
     const [validName, setValidName] = useState(false);
@@ -30,24 +29,17 @@ function Pwid() {
     const [validnick, setValidnick] = useState(false);
     const [nickFocus, setNickFocus] = useState(false);
     
-    const [errMsg, setErrMsg] = useState('');
-    const [success, setSuccess] = useState(false);
-
     useEffect(()=> {
         userRef.current.focus();
     },[])
 
     useEffect(() => {
         const result = emailRegex.test(user);
-        console.log(result);
-        console.log(user);
         setValidName(result);
     }, [user])
 
     useEffect(() => {
         const result = passwordRegex.test(pwd);
-        console.log(result);
-        console.log(pwd);
         setValidPwd(result);
         const match = pwd === matchPwd;
         setValidMatch(match);
@@ -55,58 +47,33 @@ function Pwid() {
 
     useEffect(() => {
         const result = nickRegex.test(nickname);
-        console.log(result);
-        console.log(nickname);
         setValidnick(result);
     }, [nickname])
-
-    useEffect(() => {
-        setErrMsg('');
-    }, [user, pwd, matchPwd])
-
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     console.log(user, pwd, nickname);
-    //     try {
-    //         const response = await axios.post('', 
-    //             JSON.stringify({ user, pwd, nickname }),
-    //             {
-    //                 headers: { 'Content-Type': 'application/json'},
-    //                 withCredentials: true
-    //             }
-    //         );
-    //         console.log(JSON.stringify(response?.data));
-    //         const accessToken = response?.data?.accessToken;
-    //         console.log(accessToken);
-    //       } catch (error) {
-    //         console.log(error);
-    //       }
-    // }
 
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
-        // e.preventDefault();
-        // axios({
-        //     method: "post",
-        //     url: "http://13.125.223.94:8081/customer/signup",
-        //     data: {
-        //         email: user,
-        //         password: pwd,
-        //         nickname: nickname,
-        //         // 고정값
-        //         phone: '01000000000',
-        //         name: '홍길동',
-        //     },
-        // })
-        // .then((res) => {
-        //     console.log(res);
+        e.preventDefault();
+        axios({
+            method: "post",
+            url: "http://13.125.223.94:8081/customer/signup",
+            data: {
+                email: user,
+                password: pwd,
+                nickname: nickname,
+                // 고정값
+                phone: '01000000000',
+                name: '홍길동',
+            },
+        })
+        .then((res) => {
+            console.log(res);
+            navigate('/login')
             
-        // })
-        // .catch((error) => {
-        //     console.log(error);
-        // });
-        navigate('/login')
+        })
+        .catch((error) => {
+            console.log(error);
+        });
         setUser('');
         setPwd('');
         setMatchPwd('');
@@ -216,7 +183,7 @@ function Pwid() {
                         
 
                         <button 
-                            className={!validName || !validPwd || !validMatch || !validnick ? "rounded-md mt-10 h-12 text-white bg-gray-400" : "rounded-md mt-10 h-12 text-white bg-blue-400"}
+                            className={!validName || !validPwd || !validMatch || !validnick ? "rounded-md mt-10 h-12 text-white bg-gray-400" : "rounded-md mt-10 h-12 text-white bg-blue-400 btn btn-primary"}
                             disabled={!validName || !validPwd || !validMatch || !validnick ? true : false}
                             
                         > 

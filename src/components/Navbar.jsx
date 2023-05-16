@@ -31,15 +31,13 @@ const Navbar = () => {
           {
             !localStorage.getItem("ls") ?
             <li>
-              <a href="/reviews">리뷰보기</a><a href="/login">로그인</a>
+              <a href="/login">로그인</a>
             </li>
             : 
             <>
+              
               <li>
-                <a href="/reviews">리뷰보기</a>
-              </li>
-              <li>
-                <a href="/mypage">마이 페이지</a>
+                <a href="/mypage" className="mr-2">마이 페이지</a>
               </li>
               <li>
                 <button

@@ -19,3 +19,8 @@ export const OpenAtom = atom({
     key: "OpenAtom",
     default: undefined,
 });
+
+export const LikeAtom = atom({
+    key: "LikeAtom",
+    default: [],
+})

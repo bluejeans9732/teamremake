@@ -47,9 +47,8 @@ function ProductResevation() {
     const month = date.getMonth() + 1; // 월은 0부터 시작하므로 1을 더해줍니다.
     const day = date.getDate(); // 18
     const hours = date.getHours(); // 11
-    const minutes = date.getMinutes(); // 0
 
-    const formattedDate = `${year}년 ${month}월 ${day}일 ${hours}시 ${minutes}분`;
+    const formattedDate = `${year}년 ${month}월 ${day}일 ${hours}시`;
     
    
 
@@ -63,7 +62,9 @@ function ProductResevation() {
         setTotalPrice(total);
     }, [selectedItems]);
 
+  
     return (
+
         <div className="h-full w-full overflow-y-scroll scrollbar-hide relative bg-gray-100">
             <div className="flex flex-col mx-auto bg-white ">
                 <form className="flex flex-col w-line mx-auto ">

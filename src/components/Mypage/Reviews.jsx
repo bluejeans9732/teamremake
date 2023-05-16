@@ -15,7 +15,7 @@ export default function Reviews() {
     
 
     return (
-        <div className="w-3/4 h-full mx-auto">
+        <div className="w-1/2 h-full mx-auto">
         <h2 className="leading-7 text-gray-900 text-lg mt-5 ml-3 pb-1">리뷰게시판</h2>
         <div className="overflow-x-auto mb-10 h-3/4">
         <table className="table w-full mt-5">

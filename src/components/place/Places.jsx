@@ -62,7 +62,7 @@ const Plcaes = () => {
   }, []);
 
   return (
-    <div className="">
+    <div className="mb-1">
       <div className="container w-[85%] xl:max-w-10xl grid grid-cols-1 lg:grid-cols-3 flex mx-auto">
         <div className="col-span-2 min-h-[20vh]">
           <PlacesMap height="85%" data={data} />
@@ -73,15 +73,6 @@ const Plcaes = () => {
           })}
         </div>
       </div>
-      {/* <div className="flex ml-4 mr-4">
-        <div className="grid h-20 flex-grow card bg-base-200 rounded-box place-items-center">AD</div>
-        <div className="divider divider-horizontal"></div>
-        <div className="grid h-20 flex-grow card bg-base-200 rounded-box place-items-center">AD</div>
-        <div className="divider divider-horizontal"></div>
-        <div className="grid h-20 flex-grow card bg-base-200 rounded-box place-items-center">news</div>
-        <div className="divider divider-horizontal"></div>
-        <div className="grid h-20 flex-grow card bg-base-200 rounded-box place-items-center">news</div>
-      </div>     */}
     </div>
   );
 };

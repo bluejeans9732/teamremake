@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+
 import './firebase-messaging-sw';
 
 import FirstPage from "./components/FirstPage";
@@ -22,7 +22,6 @@ import ProtectedRoute from './Routes/ProtectedRoute'
 
 
 export default function App() {
-  const [isLogin, setIsLogin] = useState(false);
 
   return (
     <BrowserRouter>

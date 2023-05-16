@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+
 function Card() {
 
+ 
     const datas =
         [
             {
@@ -45,15 +47,30 @@ function Card() {
 
     //즐겨찾기를 누를때 useState로 받아 index별로 따로 체크  단, 저장은 따로 하지않았음 하려면 localStorage로 할것
     const [bookmarkStates, setBookmarkStates] = useState(Array(datas.length).fill(false));
+    const likeItemsFromStorage = JSON.parse(localStorage.getItem('likeItems')) || []; // localstorage에서 likeItems 가져오기
+    const [likeItems, setLikeItems] = useState(likeItemsFromStorage);
 
     const handleBookmarkClick = (index) => {
         setBookmarkStates(prevStates => {
-            const newStates = [...prevStates];
-            newStates[index] = !prevStates[index];
-            return newStates;
+          const newStates = [...prevStates];
+          newStates[index] = !prevStates[index];
+          return newStates;
         });
+    
+        if (!bookmarkStates[index]) {
+          // 즐겨찾기 추가
+            const updatedLikeItems = [...likeItems.filter(item => item.id !== datas[index].id), datas[index]];
+            localStorage.setItem("likeItems", JSON.stringify(updatedLikeItems)); // localstorage에 likeItems 저장
+            setLikeItems(updatedLikeItems);
+        } else {
+            // 즐겨찾기 제거
+            const updatedLikeItems = likeItems.filter(item => item.id !== datas[index].id);
+            localStorage.setItem("likeItems", JSON.stringify(updatedLikeItems)); // localstorage에 likeItems 저장
+            setLikeItems(updatedLikeItems);
+        }
     };
-  
+
+    
     
     return (
         <div className='flex'>
@@ -77,7 +94,10 @@ function Card() {
                         </button>
                     </Link>
                   
-                    <button className={`border-2 px-3 py-1 ml-8 text-xs rounded-lg ${bookmarkStates[index] ? "bg-red-500/60 hover:bg-red-500/80" : " hover:bg-gray-300/80"}`} onClick={() => handleBookmarkClick(index)}>
+                    <button 
+                        className={`border-2 px-3 py-1 ml-8 text-xs rounded-lg ${bookmarkStates[index] ? "bg-red-500/60 hover:bg-red-500/80" : " hover:bg-gray-300/80"}`} 
+                        onClick={() => handleBookmarkClick(index)
+                    }>
                         즐겨찾기
                     </button> 
                 </div>
